@@ -1,0 +1,5 @@
+{
+  "name": "Cloud Photo Gallery",
+  "description": "A simple and elegant web application to browse your photos stored in the cloud. It features a responsive, multi-device friendly design for an optimal viewing experience everywhere.",
+  "requestFramePermissions": []
+}
