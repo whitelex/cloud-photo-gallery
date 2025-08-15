@@ -10,14 +10,14 @@ A simple and elegant web application to browse your photos. It features a respon
 - **Smooth Loading Experience**: Skeletons and animations provide a pleasant user experience while images are loading.
 - **Error Handling**: Gracefully handles and displays errors if photos fail to load, with a retry option.
 - **Modern Stack**: Built with React, TypeScript, and styled with Tailwind CSS for a professional and maintainable codebase.
-- **Static & Fast**: Built as a static site with hardcoded data for maximum performance and easy deployment on platforms like Cloudflare Pages.
+- **Static & Fast**: A simple build process bundles the static files for maximum performance and easy deployment on platforms like Cloudflare Pages.
 
 ## 🚀 Tech Stack
 
 - **React 19**: For building the user interface.
 - **TypeScript**: For static typing and improved developer experience.
 - **Tailwind CSS**: For utility-first styling.
-- **Zero Build**: Uses ES modules directly in the browser via `esm.sh` CDN for ultimate simplicity.
+- **Zero Build (in development)**: Uses ES modules directly in the browser via `esm.sh` CDN for a fast development loop.
 - **Wrangler**: For local development and Cloudflare integration.
 
 ## 📂 Project Structure
@@ -26,10 +26,13 @@ A simple and elegant web application to browse your photos. It features a respon
 .
 ├── components/          # Reusable React components
 ├── services/            # Data fetching logic
+├── dist/                # Build output directory
+├── .gitignore           # Specifies intentionally untracked files to ignore
 ├── App.tsx              # Main application component
 ├── index.html           # HTML entry point
 ├── index.tsx            # React root renderer
 ├── metadata.json        # Application metadata
+├── package.json         # Project definition and scripts
 ├── README.md            # This file
 ├── types.ts             # Shared TypeScript types
 └── wrangler.toml        # Wrangler configuration for Cloudflare Pages
@@ -44,21 +47,21 @@ A simple and elegant web application to browse your photos. It features a respon
 
 ### Local Development
 
-1.  **Install Wrangler**: If you don't have it, install it globally.
+1.  **Install Dependencies**: Open your terminal in the project root and run:
     ```bash
-    npm install -g wrangler
+    npm install
     ```
 
-2.  **Start the development server**: Run the following command from your project root. This tells Wrangler to serve your static files from the current directory (`.`).
+2.  **Start the development server**: This command tells Wrangler to serve your project files directly.
     ```bash
-    wrangler pages dev .
+    npm run dev
     ```
 
 3.  **Open your browser** and navigate to the URL provided by Wrangler (usually `http://localhost:8788`).
 
 ## 🚀 Deploying to Cloudflare Pages
 
-This application is a static site, making deployment to [Cloudflare Pages](https://pages.cloudflare.com/) extremely simple via the recommended Git-integration.
+This application is configured with a build step, making it easy to deploy to [Cloudflare Pages](https://pages.cloudflare.com/) via the recommended Git-integration.
 
 ### Step-by-Step Instructions
 
@@ -68,14 +71,8 @@ This application is a static site, making deployment to [Cloudflare Pages](https
 4.  **Select your repository** and begin setup.
 5.  **Configure the build settings** as follows:
     - **Framework preset**: Select `None`.
-    - **Build command**: **LEAVE THIS BLANK**. This is the most important step.
-    - **Build output directory**: Set this to `.` (a single dot, representing the root directory).
+    - **Build command**: `npm install && npm run build`
+    - **Build output directory**: `dist`
 6.  **Save and Deploy!**
 
-Cloudflare will now deploy your site. Any future `git push` to your connected branch will trigger a new deployment.
-
-### 🚨 Troubleshooting: "Missing entry-point" Error
-
-If your deployment fails with an error like `Missing entry-point to Worker script or to assets directory`, it is because you have entered a command (like `npx wrangler deploy`) into the **Build command** field in your Cloudflare Pages settings.
-
-**Solution**: Go to your project's settings in the Cloudflare Pages dashboard (`Settings` > `Builds & deployments`) and **clear the Build command field**. Your project is a static site and does not require a build command.
+Cloudflare will now install dependencies, run the build script, and deploy the contents of the `dist` directory. Any future `git push` to your connected branch will trigger a new deployment.

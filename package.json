@@ -1,20 +1,15 @@
 {
   "name": "cloud-photo-gallery",
+  "version": "1.0.0",
+  "description": "A simple and elegant web application to browse your photos.",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "build": "shx rm -rf dist && shx mkdir -p dist && shx cp -r components services *.html *.tsx *.ts *.json wrangler.toml dist/",
+    "deploy": "wrangler pages deploy dist",
+    "dev": "wrangler pages dev ."
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "shx": "^0.3.4",
+    "wrangler": "^3.57.0"
   }
 }
