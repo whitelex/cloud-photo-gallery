@@ -18,51 +18,64 @@ A simple and elegant web application to browse your photos. It features a respon
 - **TypeScript**: For static typing and improved developer experience.
 - **Tailwind CSS**: For utility-first styling.
 - **Zero Build**: Uses ES modules directly in the browser via `esm.sh` CDN for ultimate simplicity.
+- **Wrangler**: For local development and Cloudflare integration.
 
 ## 📂 Project Structure
-
-The project is organized into several key directories:
 
 ```
 .
 ├── components/          # Reusable React components
-│   ├── Header.tsx
-│   ├── PhotoCard.tsx
-│   ├── PhotoGrid.tsx
-│   ├── PhotoModal.tsx
-│   └── Spinner.tsx
 ├── services/            # Data fetching logic
-│   └── photoService.ts
 ├── App.tsx              # Main application component
 ├── index.html           # HTML entry point
 ├── index.tsx            # React root renderer
 ├── metadata.json        # Application metadata
-└── types.ts             # Shared TypeScript types
+├── README.md            # This file
+├── types.ts             # Shared TypeScript types
+└── wrangler.toml        # Wrangler configuration for Cloudflare Pages
 ```
 
 ## ▶️ Getting Started
 
-This project is a static web application and requires no build step.
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (which includes npm)
+- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) (Cloudflare's command-line tool)
 
 ### Local Development
 
-1.  **Open your terminal** in the project's root directory.
-
-2.  **Serve the files** using a simple local web server. If you have Node.js installed, you can use `npx serve`:
+1.  **Install Wrangler**: If you don't have it, install it globally.
     ```bash
-    npx serve
+    npm install -g wrangler
     ```
 
-3.  **Open your browser** and navigate to the URL provided by the server (usually `http://localhost:3000`).
+2.  **Start the development server**: Run the following command from your project root. This tells Wrangler to serve your static files from the current directory (`.`).
+    ```bash
+    wrangler pages dev .
+    ```
+
+3.  **Open your browser** and navigate to the URL provided by Wrangler (usually `http://localhost:8788`).
 
 ## 🚀 Deploying to Cloudflare Pages
 
-This application is optimized for deployment on static hosting platforms like [Cloudflare Pages](https://pages.cloudflare.com/).
+This application is a static site, making deployment to [Cloudflare Pages](https://pages.cloudflare.com/) extremely simple via the recommended Git-integration.
+
+### Step-by-Step Instructions
 
 1.  **Push your code** to a GitHub or GitLab repository.
-2.  **Create a new project** on the Cloudflare Pages dashboard.
-3.  **Connect your repository** to the Cloudflare project.
-4.  **Configure the build settings**:
-    - **Build command**: Leave this blank.
-    - **Build output directory**: Set this to `/` (or the root of your project).
-5.  **Deploy!** Cloudflare Pages will automatically deploy your site and update it whenever you push new changes to your repository.
+2.  **Log in** to your Cloudflare dashboard and navigate to **Workers & Pages**.
+3.  Click **Create application** > **Pages** > **Connect to Git**.
+4.  **Select your repository** and begin setup.
+5.  **Configure the build settings** as follows:
+    - **Framework preset**: Select `None`.
+    - **Build command**: **LEAVE THIS BLANK**. This is the most important step.
+    - **Build output directory**: Set this to `.` (a single dot, representing the root directory).
+6.  **Save and Deploy!**
+
+Cloudflare will now deploy your site. Any future `git push` to your connected branch will trigger a new deployment.
+
+### 🚨 Troubleshooting: "Missing entry-point" Error
+
+If your deployment fails with an error like `Missing entry-point to Worker script or to assets directory`, it is because you have entered a command (like `npx wrangler deploy`) into the **Build command** field in your Cloudflare Pages settings.
+
+**Solution**: Go to your project's settings in the Cloudflare Pages dashboard (`Settings` > `Builds & deployments`) and **clear the Build command field**. Your project is a static site and does not require a build command.
