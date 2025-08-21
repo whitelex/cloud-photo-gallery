@@ -24,7 +24,21 @@ export const fetchPhotosFromS3 = async (): Promise<Photo[]> => {
     { id: '14', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20231214_183338.jpg', alt: '', width: 1000, height: 600 },
     { id: '15', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20241122_135244.jpg', alt: '', width: 1000, height: 600 },
     { id: '16', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20240201_173254.jpg', alt: '', width: 1000, height: 600 },
-    { id: '17', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20250328_152337.jpg', alt: '', width: 1000, height: 600 }
+    { id: '17', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20250328_152337.jpg', alt: '', width: 1000, height: 600 },
+    { id: '18', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20220520_131101.jpg', alt: '', width: 1000, height: 600 },
+    { id: '19', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20220601_180451.jpg', alt: '', width: 1000, height: 600 },
+    { id: '20', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20220601_180509.jpg', alt: '', width: 1000, height: 600 },
+    { id: '21', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20220713_121212.jpg', alt: '', width: 1000, height: 600 },
+    { id: '22', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20221202_135438.jpg', alt: '', width: 1000, height: 600 },
+    { id: '23', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20231013_183231.jpg', alt: '', width: 1000, height: 600 },
+    { id: '24', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20211221_151115.jpg', alt: '', width: 1000, height: 600 },
+    { id: '25', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20211221_151122.jpg', alt: '', width: 1000, height: 600 },
+    { id: '26', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20211221_151127.jpg', alt: '', width: 1000, height: 600 },
+    { id: '27', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20220317_185848.jpg', alt: '', width: 1000, height: 600 },
+    { id: '28', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20220408_145233.jpg', alt: '', width: 1000, height: 600 },
+    { id: '29', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20211208_143610.jpg', alt: '', width: 1000, height: 600 },
+    { id: '30', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20211208_143634.jpg', alt: '', width: 1000, height: 600 },
+    { id: '31', url: 'https://pub-73ed1ce74c3649779fab5923bbcef3c8.r2.dev/20211210_161532.jpg', alt: '', width: 1000, height: 600 }
   ];
 
   // The function is async to maintain the same signature as a real API call.
